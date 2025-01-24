@@ -1,0 +1,119 @@
+.background-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-size: cover;
+    /* background-position: center; */
+    filter: blur(8.025px); /* Làm mờ ảnh nền */
+    opacity: 0.1;
+}
+
+
+.background-overlay img{
+    width: 100%;
+    height: 100%;
+} 
+
+.movie-info h1{
+    color: #5CC793;
+}
+
+.movie-detail-container {
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    width: 100%;
+    margin: 50px auto;
+    align-items: center;
+    position: relative;
+    z-index: 0;
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.281); /* Nền đen trong suốt */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.movie-poster .img-card
+{
+    width:690px;
+    height: 480px;
+    object-fit: cover;
+}
+
+.gradient-overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 70%; /* Chiều cao của gradient */
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+    z-index: 0;
+}
+
+
+/*Danh sach tap phim*/
+.episode {
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 50px;
+    height: 100%;
+    max-width: 100%;
+    padding: 70px;
+    margin: 70px;
+}
+
+
+.episode h2 {
+    margin: auto;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #5CC793;
+}
+
+.episode-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.episode-item {
+    background: #2c2c2c;
+    padding: 10px 15px;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s;
+}
+
+.episode-item a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.episode-item:hover {
+    background-color: #5cc79357;
+    cursor: pointer;
+}
+
+
+.video-frame {
+    width: 1800px;
+    height: 700px;
+    margin: 50px auto;
+    margin-bottom: 30px;
+    position: relative;
+    overflow: hidden;
+    display:none;
+}
+
+.video-frame iframe {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #333;
+    border-radius: 8px;
+    position: absolute;
+    display: block;
+}

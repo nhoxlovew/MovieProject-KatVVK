@@ -1,0 +1,90 @@
+.main-card {
+    width: 100%;
+}
+
+.main-card .movie-card-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 10px;
+    box-sizing: border-box;
+    gap: 10px;
+}
+
+.card {
+    position: relative;
+    width: 300px;
+    height: 450px;
+    margin: 10px;
+    border-radius:10px ;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.img-card {
+    width: 100%;
+    object-fit: cover;
+    height: 480px;
+    transition: opacity 0.3s ease;
+}
+
+.content {
+    position: absolute;
+    bottom: 0px;
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    opacity: 1;
+    transform: translateY(70px);
+    transition: opacity 0.3s ease, transform 0.3s ease-in-out;
+}
+
+.card:hover .img-card {
+    opacity: 0.4;
+    transform: scale(1.05);
+    transition: transform 1.5s ease;
+    cursor: pointer;
+}
+
+
+.card:hover .content {
+    opacity: 1;
+    text-align: center;
+    transform: translateY(-20px);
+}
+
+
+.play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    background-color: #1c1c1c;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    color: #ff9800;
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 1.05s ease-out;
+}
+
+.card:hover .play-button {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.2);
+    cursor: pointer;
+}
+
+.play-button::after {
+    content: '▶';
+    font-size: 28px;
+    color: #5CC793;
+}
+

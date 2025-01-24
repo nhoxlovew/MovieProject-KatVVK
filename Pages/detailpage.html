@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Detail</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/filmcard.css">
+    <link rel="stylesheet" href="../css/detailmovie.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="/index.html"><img src="../images/katvvk-high-resolution-logo-transparent.png" alt=""></a>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="/index.html">Home</a></li>
+                    <li><a href="/Pages/phim-le.html">Single</a></li>
+                    <li><a href="/Pages/phim-bo.html">Series</a></li>
+                    <li><a href="/Pages/phim-hoat-hinh.html">Cartoon</a></li>
+                    <li><a href="/Pages/phim-truyen-hinh.html">TV-Shows</a></li>
+                    <li><a href="#">Other</a></li>
+                </ul>
+            </nav>
+            <div class="search-login">
+                <div class="search-box">
+                    <input type="text" placeholder="Tìm tên phim...">
+                    <i style="color: #5CC793;" class="fa-solid fa-magnifying-glass fa-lg"></i>
+                </div>
+                <div class="auth">
+                    <a href="#" class="login">Login</a>
+                    <a href="#" class="signup">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="background-overlay">
+        <!-- Hiển thị hình nền mờ mờ -->
+        <img src="../images/image1.png" alt="">
+        <div class="gradient-overlay"></div>
+    </div>
+
+    <section class="movie-detail-container">
+        <div class="movie-poster">
+            <img class="img-card" src="../images/image.png" alt="Movie Poster">
+        </div>
+
+        <div class="movie-info">
+            <h1 class="movie-title">Movie Title</h1>
+            <p><strong>Năm Phát Hành:</strong> January 1, 2025</p>
+            <p><strong>Thể Loại:</strong> Action, Adventure</p>
+            <p><strong>Biên đạo:</strong> John Doe</p>
+            <p><strong>Diễn Viên:</strong> Actor 1, Actor 2, Actor 3</p>
+            <p class="movie-description">
+                <strong>Nội dung phim:</strong>
+                <a>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio.
+                    Praesent libero. Sed cursus ante dapibus diam.</a>
+            </p>
+            <button class="play-button">▶ Watch Trailer</button>
+        </div>
+    </section>
+
+    <div class="video-frame" id="video-frame"></div>
+
+    <section class="episode">
+        <h2>Danh sách các tập phim</h2>
+        <div class="episode-list">
+            <!-- <div class="episode-item">
+                    <a href="#">Tập 1: Sự khởi đầu</a>
+                </div> -->
+        </div>
+    </section>
+    <script src="/js/api.js"></script>
+</body>
+
+</html>

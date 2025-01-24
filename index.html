@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Xem Phim</title>
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/filmcard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="/index.html"><img src="../images/katvvk-high-resolution-logo-transparent.png" alt=""></a>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="/index.html" class="nav-link active">Home</a></li>
+                    <li><a href="/Pages/phim-le.html" class="nav-link">Single</a></li>
+                    <li><a href="/Pages/phim-bo.html" class="nav-link">Series</a></li>
+                    <li><a href="/Pages/phim-hoat-hinh.html" class="nav-link">Cartoon</a></li>
+                    <li><a href="/Pages/phim-truyen-hinh.html" class="nav-link">TV-Shows</a></li>
+                    <li><a href="#" class="nav-link">Other</a></li>
+                </ul>
+            </nav>
+            <div class="search-login">
+                <div class="search-box">
+                    <input type="text" id="search-input" placeholder="Tìm tên phim...">
+                    <i style="color: #5CC793;" class="fa-solid fa-magnifying-glass fa-lg"></i>
+                    <div id="movie-suggest"></div>
+                </div>
+                <div class="auth">
+                    <a href="#" class="login">Login</a>
+                    <a href="#" class="signup">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <h1 class="section-title">Cập nhật hôm nay?</h1>
+        <div class="carousel-container">
+            
+            <div class="carousel">
+                <div class="carousel-track">
+                    <!-- Slides will be inserted here by JavaScript -->
+                </div>
+                <button class="carousel-button prev">❮</button>
+                <button class="carousel-button next">❯</button>
+            </div>
+            <div class="carousel-dots"></div>
+        </div>
+
+        <div class="main-card">
+            <h1 class="section-title">Phim Mới</h1>
+            <div class="movie-card-container">
+                <!-- <div class="card">
+                    <img class="img-card" src="/images/image.png" alt="Movie Title">
+                    <div class="content">
+                        <span>Movie Title</span>
+                    </div>
+                </div> -->
+            </div>
+    </main>
+
+    <section>
+        <div>
+            <div class="pagnigtion"></div>
+        </div>
+    </section>
+    <script src="/js/api.js"></script>
+</body>
+
+</html>
