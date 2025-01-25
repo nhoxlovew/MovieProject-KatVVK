@@ -163,12 +163,10 @@ async function loadMovies(page = 1) {
         console.error("Error loading movies:", error);
     }
 }
-
 // Initialize both carousel and movies when on index page
-if (window.location.pathname.includes('index.html')) {
     initializeCarousel();
     loadMovies();
-}
+
 
 
 
