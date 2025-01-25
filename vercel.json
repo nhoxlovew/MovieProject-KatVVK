@@ -1,5 +1,14 @@
 {
-    "rewrites": [
-      { "source": "/", "destination": "/index.html" }
-    ]
-  }
+  "routes": [
+    {
+      "src": "/",
+      "dest": "/index.html"
+    },
+    {
+      "src": "/Pages/(.*)",
+      "dest": "/Pages/$1"
+    }
+  ],
+  "cleanUrls": true,
+  "trailingSlash": false
+}

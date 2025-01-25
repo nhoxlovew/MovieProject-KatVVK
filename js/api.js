@@ -164,8 +164,11 @@ async function loadMovies(page = 1) {
     }
 }
 // Initialize both carousel and movies when on index page
+
+if (window.location.pathname.includes('/')) {
     initializeCarousel();
     loadMovies();
+}
 
 
 
