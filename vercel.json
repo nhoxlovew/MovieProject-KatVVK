@@ -1,7 +1,5 @@
 {
-    "routes": [
-      { "src": "/", "dest": "/index.html" },
-      { "src": "/Pages/(.*)", "dest": "/Pages/$1" },
-      { "handle": "filesystem" }
+    "rewrites": [
+      { "source": "/", "destination": "/index.html" }
     ]
   }
