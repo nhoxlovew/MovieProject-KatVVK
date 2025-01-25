@@ -1,0 +1,213 @@
+@media (max-width: 375) {
+    .nav{
+        width: 1px;
+    }
+}
+
+/* iPhone 7 - Width: 375px */
+@media screen and (max-width: 375px) {
+    /* Header */
+    .header .container {
+        padding: 0 10px;
+    }
+
+    .logo img {
+        width: 80px;
+    }
+
+    .nav {
+        display: none; /* Ẩn navigation chính */
+    }
+
+    .search-login {
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    .search-box {
+        width: 200px;
+    }
+
+    .search-box input {
+        width: 100%;
+        font-size: 14px;
+    }
+
+    .auth {
+        display: none; /* Ẩn login/signup buttons */
+    }
+
+    /* Carousel */
+    .carousel-container {
+        margin: 10px 0;
+    }
+
+    .carousel-slide {
+        height: 200px;
+    }
+
+    .carousel-slide img {
+        height: 100%;
+    }
+
+    .slide-content {
+        padding: 10px;
+    }
+
+    .slide-content h2 {
+        font-size: 16px;
+    }
+
+    .slide-content p {
+        font-size: 12px;
+    }
+
+    /* Movie Cards */
+    .movie-card-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .card {
+        width: 100%;
+    }
+
+    .card img {
+        height: 180px;
+    }
+
+    .content span {
+        font-size: 14px;
+    }
+
+    /* Search Results */
+    #movie-suggest {
+        width: 100%;
+        left: 0;
+        max-height: 300px;
+    }
+
+    .card-result {
+        padding: 5px;
+    }
+
+    .card-result img {
+        width: 40px;
+        height: 60px;
+    }
+
+    .card-result-name {
+        font-size: 14px;
+    }
+}
+
+/* iPhone XS - Width: 414px */
+@media screen and (max-width: 414px) {
+    /* Header */
+    .header .container {
+        padding: 0 15px;
+    }
+
+    .logo img {
+        width: 90px;
+    }
+
+    .search-box {
+        width: 220px;
+    }
+
+    /* Carousel */
+    .carousel-slide {
+        height: 220px;
+    }
+
+    .slide-content h2 {
+        font-size: 18px;
+    }
+
+    /* Movie Cards */
+    .movie-card-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        padding: 15px;
+    }
+
+    .card img {
+        height: 200px;
+    }
+
+    /* Search Results */
+    .card-result img {
+        width: 45px;
+        height: 65px;
+    }
+}
+
+/* Common styles for both devices */
+@media screen and (max-width: 414px) {
+    /* Section Titles */
+    .section-title {
+        font-size: 20px;
+        margin: 15px 0;
+        padding: 0 15px;
+    }
+
+    /* Pagination */
+    .pagination {
+        padding: 10px;
+    }
+
+    .pagination button {
+        padding: 5px 10px;
+        font-size: 14px;
+        margin: 0 3px;
+    }
+
+    /* Loading & Error States */
+    .error-message {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    /* Hamburger Menu for Mobile */
+    .mobile-menu-btn {
+        display: block;
+        position: absolute;
+        right: 15px;
+        top: 15px;
+    }
+
+    /* Mobile Navigation */
+    .mobile-nav {
+        display: none;
+        position: fixed;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: #1a1a1a;
+        padding: 10px 0;
+        z-index: 1000;
+    }
+
+    .mobile-nav.active {
+        display: block;
+    }
+
+    .mobile-nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .mobile-nav li {
+        padding: 10px 15px;
+        border-bottom: 1px solid #333;
+    }
+
+    .mobile-nav a {
+        color: white;
+        text-decoration: none;
+        font-size: 16px;
+    }
+}

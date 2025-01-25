@@ -1,20 +1,21 @@
-const movieContainer = document.querySelector('.movie-card-container');
 const phimBo = document.querySelector('#phim-bo')
 const mainContainer = document.querySelector('.main-card');
 const detailContainer = document.getElementsByClassName('.movie-detail-container');
 const paginationContainer = document.getElementById('pagination')
-const apiURL = "https://ophim1.com/danh-sach/phim-moi-cap-nhat?page=1";
+const homeapiURL = "https://ophim1.com/danh-sach/phim-moi-cap-nhat?page=1";
 const path_img = "https://img.ophim.live/uploads/movies/"
 let currentPage = 1;
 let totalPages = 1;
 
 async function initializeCarousel() {
     try {
-        const response = await axios.get(apiURL);
-        const item = response.data.items;
-        console.log(item);
+        const response = await fetch(homeapiURL);
+        const data = await response.json();
+        console.log(data);
 
-        const carouselQuantity = item.slice(0, 10);
+
+        const res = data.items
+        const carouselQuantity = res.slice(0, 10);
         const carouselTrack = document.querySelector('.carousel-track');
 
         carouselTrack.innerHTML = ``;
@@ -130,17 +131,15 @@ async function initializeCarousel() {
 
 
 
-async function loadMovies(page = 1) {
+async function getPhimMoi(page = 1) {
+    const phimMoiContainer = document.querySelector('#phim-moi');
     try {
-        const response = await fetch(apiURL);
+        const response = await fetch(homeapiURL);
         const data = await response.json();
 
         const movies = data.items;
         const baseImageUrl = data.pathImage;
-        totalPages = data.pagination.totalPages;
-        currentPage = page;
-
-        movieContainer.innerHTML = movies.map((item) => `
+        phimMoiContainer.innerHTML = movies.map((item) => `
             <div class="card" data-id="${item.slug}">
                 <img class="img-card" src="${baseImageUrl}${item.thumb_url}" alt="Movie Title">
                 <div class="content">
@@ -167,7 +166,7 @@ async function loadMovies(page = 1) {
 
 if (window.location.pathname.includes('/')) {
     initializeCarousel();
-    loadMovies();
+    getPhimMoi();
 }
 
 
@@ -175,7 +174,7 @@ if (window.location.pathname.includes('/')) {
 
 async function getPhimBo(page = 1) {
     const phimBoContainer = document.querySelector('#phim-bo');
-    let apiUrl = 'https://ophim1.com/v1/api/danh-sach/phim-bo?page=${page}';
+    let apiUrl = '';
 
     if (window.location.pathname.includes('phim-bo.html')) {
         apiUrl = `https://ophim1.com/v1/api/danh-sach/phim-bo?page=${page}`;
@@ -447,21 +446,51 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         } catch (error) {
             console.error('Lỗi khi tìm kiếm phim:', error);
-            searchResultsContainer.innerHTML = '<p>Đã xảy ra lỗi. Vui lòng thử lại.</p>';
+            mvsg.innerHTML = '<p>Đã xảy ra lỗi. Vui lòng thử lại.</p>';
         }
     }
 
+    function hideSearchResults() {
+        mvsg.style.display = "none";
+        mvsg.innerHTML = '';
+    }
+
     const debouncedSearch = debounce(function () {
-        if (searchInput.value.trim() !== '') {
-            searchMovies(searchInput.value.trim());
+        const searchTerm = searchInput.value.trim();
+        if (searchTerm !== '') {
+            mvsg.style.display = "block";
+            searchMovies(searchTerm);
+        } else {
+            hideSearchResults();
         }
     }, 500);
 
+
+    // Chỉ ẩn kết quả khi input rỗng
     searchInput.addEventListener('input', function () {
-        mvsg.style.display = "block";
-        debouncedSearch();
+        const searchTerm = this.value.trim();
+        if (searchTerm === '') {
+            hideSearchResults();
+        } else {
+            debouncedSearch();
+        }
     });
 
+    // Xử lý click vào kết quả tìm kiếm
+    mvsg.addEventListener('click', function (event) {
+        const cardResult = event.target.closest('.card-result');
+        if (cardResult) {
+            const filmId = cardResult.getAttribute('data-id');
+            window.location.href = `/Pages/detailpage.html?id=${filmId}`;
+        }
+    });
+
+    // Focus vào input sẽ hiển thị lại kết quả nếu có text
+    searchInput.addEventListener('focus', function () {
+        if (this.value.trim() !== '') {
+            mvsg.style.display = "block";
+        }
+    });
 });
 
 
@@ -525,59 +554,6 @@ if (window.location.pathname.includes('phim-le.html')) {
 // function page
 
 
-async function loadPage(page) {
-    currentPage = page;
-    // Gọi hàm tải phim tương ứng với trang hiện tại
-    if (window.location.pathname.includes('phim-bo.html')) {
-        await getPhimBo(page);
-    } else if (window.location.pathname.includes('phim-hoat-hinh.html')) {
-        await getPhimHoatHinh(page);
-    } else if (window.location.pathname.includes('phim-le.html')) {
-        await getPhimLe(page);
-    } else if (window.location.pathname.includes('phim-truyen-hinh.html')) {
-        await getPhimTruyenHinh(page);
-    }
-    createPaginationButtons(totalPages, currentPage);
-}
-
 // Hàm để tạo các nút phân trang
-function createPaginationButtons(totalPages, currentPage) {
-    const paginationContainer = document.getElementById('pagination');
-    paginationContainer.innerHTML = '';
-
-    // Nút Previous
-    if (currentPage > 1) {
-        const prevButton = document.createElement('button');
-        prevButton.innerText = 'Previous';
-        prevButton.addEventListener('click', () => {
-            loadPage(currentPage - 1);
-        });
-        paginationContainer.appendChild(prevButton);
-    }
-
-    // Các nút số trang
-    for (let i = 1; i <= totalPages; i++) {
-        const pageButton = document.createElement('button');
-        pageButton.innerText = i;
-        if (i === currentPage) {
-            pageButton.classList.add('active');
-        }
-        pageButton.addEventListener('click', () => {
-            loadPage(i);
-        });
-        paginationContainer.appendChild(pageButton);
-    }
-
-    // Nút Next
-    if (currentPage < totalPages) {
-        const nextButton = document.createElement('button');
-        nextButton.innerText = 'Next';
-        nextButton.addEventListener('click', () => {
-            loadPage(currentPage + 1);
-        });
-        paginationContainer.appendChild(nextButton);
-    }
-}
-
 
 

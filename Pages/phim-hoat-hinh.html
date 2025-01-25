@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/css/index.css">
     <link rel="stylesheet" href="/css/filmcard.css">
     <link rel="stylesheet" href="/css/detailmovie.css">
+    <link rel="icon" href="/images/katvvk-high-resolution-logo-transparent.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
@@ -30,8 +31,9 @@
             </nav>
             <div class="search-login">
                 <div class="search-box">
-                    <input type="text" placeholder="Tìm tên phim...">
+                    <input type="text" id="search-input" placeholder="Tìm tên phim...">
                     <i style="color: #5CC793;" class="fa-solid fa-magnifying-glass fa-lg"></i>
+                    <div id="movie-suggest"></div>
                 </div>
                 <div class="auth">
                     <a href="#" class="login">Login</a>
