@@ -5,7 +5,8 @@ const detailContainer = document.getElementsByClassName('.movie-detail-container
 const paginationContainer = document.getElementById('pagination')
 const apiURL = "https://ophim1.com/danh-sach/phim-moi-cap-nhat?page=1";
 const path_img = "https://img.ophim.live/uploads/movies/"
-
+let currentPage = 1;
+let totalPages = 1;
 
 async function initializeCarousel() {
     try {
@@ -13,7 +14,7 @@ async function initializeCarousel() {
         const item = response.data.items;
         console.log(item);
 
-        const carouselQuantity = item.slice(0, 5);
+        const carouselQuantity = item.slice(0, 10);
         const carouselTrack = document.querySelector('.carousel-track');
 
         carouselTrack.innerHTML = ``;
@@ -21,6 +22,7 @@ async function initializeCarousel() {
         carouselQuantity.forEach(items => {
             const slide = document.createElement('div');
             slide.className = 'carousel-slide';
+            slide.setAttribute('data-id', items.slug)
             slide.innerHTML = `
                 <img src="${path_img}${items.poster_url}" alt="${items.name}">
                 <div class="slide-content">
@@ -29,6 +31,11 @@ async function initializeCarousel() {
                     <p>${items.year}</p>
                 </div>
             `;
+            // Thêm event listener trực tiếp vào slide
+            slide.addEventListener('click', function () {
+                const filmId = this.getAttribute('data-id');
+                window.location.href = `/Pages/detailpage.html?id=${filmId}`;
+            });
             carouselTrack.appendChild(slide);
         });
 
@@ -117,7 +124,7 @@ async function initializeCarousel() {
             </div>
         `;
     }
-    
+
 }
 
 
@@ -423,13 +430,20 @@ document.addEventListener('DOMContentLoaded', function () {
             let html = ''
             data.items.forEach(item => {
                 html += `
-                <div class="card-result">
-                    <img src="${path_img}${item.thumb_url}" class="" />     
+                <div class="card-result" data-id="${item.slug}">
+                    <img src="${path_img}${item.thumb_url}"  />     
                     <div class="card-result-name">${item.name}</div>
                 </div>
                 `
             })
             mvsg.innerHTML = html;
+            const filmCards = document.querySelectorAll('.card-result');
+            filmCards.forEach(card => {
+                card.addEventListener('click', function () {
+                    const filmId = card.getAttribute('data-id');
+                    window.location.href = `/Pages/detailpage.html?id=${filmId}`;
+                });
+            });
         } catch (error) {
             console.error('Lỗi khi tìm kiếm phim:', error);
             searchResultsContainer.innerHTML = '<p>Đã xảy ra lỗi. Vui lòng thử lại.</p>';
@@ -507,4 +521,59 @@ if (window.location.pathname.includes('phim-le.html')) {
 
 
 ///phan trang
+// function page
 
+
+async function loadPage(page) {
+    currentPage = page;
+    // Gọi hàm tải phim tương ứng với trang hiện tại
+    if (window.location.pathname.includes('phim-bo.html')) {
+        await getPhimBo(page);
+    } else if (window.location.pathname.includes('phim-hoat-hinh.html')) {
+        await getPhimHoatHinh(page);
+    } else if (window.location.pathname.includes('phim-le.html')) {
+        await getPhimLe(page);
+    } else if (window.location.pathname.includes('phim-truyen-hinh.html')) {
+        await getPhimTruyenHinh(page);
+    }
+    createPaginationButtons(totalPages, currentPage);
+}
+
+// Hàm để tạo các nút phân trang
+function createPaginationButtons(totalPages, currentPage) {
+    const paginationContainer = document.getElementById('pagination');
+    paginationContainer.innerHTML = '';
+
+    // Nút Previous
+    if (currentPage > 1) {
+        const prevButton = document.createElement('button');
+        prevButton.innerText = 'Previous';
+        prevButton.addEventListener('click', () => {
+            loadPage(currentPage - 1);
+        });
+        paginationContainer.appendChild(prevButton);
+    }
+
+    // Các nút số trang
+    for (let i = 1; i <= totalPages; i++) {
+        const pageButton = document.createElement('button');
+        pageButton.innerText = i;
+        if (i === currentPage) {
+            pageButton.classList.add('active');
+        }
+        pageButton.addEventListener('click', () => {
+            loadPage(i);
+        });
+        paginationContainer.appendChild(pageButton);
+    }
+
+    // Nút Next
+    if (currentPage < totalPages) {
+        const nextButton = document.createElement('button');
+        nextButton.innerText = 'Next';
+        nextButton.addEventListener('click', () => {
+            loadPage(currentPage + 1);
+        });
+        paginationContainer.appendChild(nextButton);
+    }
+}

@@ -340,5 +340,22 @@ body {
 }
 
 
+/*  */
+.pagination-container {
+    text-align: center;
+    margin-top: 20px;
+}
 
-/* Add styles for the search icon */
+.pagination button {
+    margin: 0 5px;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.pagination button.active {
+    background-color: #5CC793;
+    color: #fff;
+    border-color: #5CC793;
+}
