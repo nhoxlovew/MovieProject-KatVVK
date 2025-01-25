@@ -577,3 +577,6 @@ function createPaginationButtons(totalPages, currentPage) {
         paginationContainer.appendChild(nextButton);
     }
 }
+
+
+
