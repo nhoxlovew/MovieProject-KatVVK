@@ -1,17 +1,15 @@
-const phimBo = document.querySelector('#phim-bo')
 const mainContainer = document.querySelector('.main-card');
 const detailContainer = document.getElementsByClassName('.movie-detail-container');
-const paginationContainer = document.getElementById('pagination')
 const homeapiURL = "https://ophim1.com/danh-sach/phim-moi-cap-nhat?page=1";
 const path_img = "https://img.ophim.live/uploads/movies/"
 let currentPage = 1;
 let totalPages = 1;
+const itemsPerPage = 24; // Number of movies per page
 
 async function initializeCarousel() {
     try {
         const response = await fetch(homeapiURL);
         const data = await response.json();
-        console.log(data);
 
 
         const res = data.items
@@ -134,11 +132,17 @@ async function initializeCarousel() {
 async function getPhimMoi(page = 1) {
     const phimMoiContainer = document.querySelector('#phim-moi');
     try {
-        const response = await fetch(homeapiURL);
+        const response = await fetch(`https://ophim1.com/danh-sach/phim-moi-cap-nhat?page=${page}`);
         const data = await response.json();
+
+        // Update total pages
+        totalPages = Math.ceil(data.pagination.totalItems / itemsPerPage);
+        currentPage = page;
 
         const movies = data.items;
         const baseImageUrl = data.pathImage;
+
+        // Clear existing content
         phimMoiContainer.innerHTML = movies.map((item) => `
             <div class="card" data-id="${item.slug}">
                 <img class="img-card" src="${baseImageUrl}${item.thumb_url}" alt="Movie Title">
@@ -149,7 +153,7 @@ async function getPhimMoi(page = 1) {
             </div>
         `).join('');
 
-        // Keep your existing click handlers
+        // Add click handlers
         const filmCards = document.querySelectorAll('.card');
         filmCards.forEach(card => {
             card.addEventListener('click', function () {
@@ -158,10 +162,54 @@ async function getPhimMoi(page = 1) {
             });
         });
 
+        // Create pagination
+        createPagination();
+
     } catch (error) {
         console.error("Error loading movies:", error);
     }
 }
+
+// Add this new function to create pagination
+function createPagination() {
+    const paginationContainer = document.querySelector('.pagination');
+    let paginationHTML = '';
+
+    // Previous button
+    paginationHTML += `
+        <button ${currentPage === 1 ? 'disabled' : ''} 
+                onclick="getPhimMoi(${currentPage - 1})" 
+                class="pagination-btn">
+            Previous
+        </button>
+    `;
+
+    // Page numbers
+    for (let i = 1; i <= totalPages; i++) {
+        if (i === 1 || i === totalPages || (i >= currentPage - 2 && i <= currentPage + 2)) {
+            paginationHTML += `
+                <button onclick="getPhimMoi(${i})" 
+                        class="pagination-btn ${currentPage === i ? 'active' : ''}">
+                    ${i}
+                </button>
+            `;
+        } else if (i === currentPage - 3 || i === currentPage + 3) {
+            paginationHTML += '<span class="pagination-dots">...</span>';
+        }
+    }
+
+    // Next button
+    paginationHTML += `
+        <button ${currentPage === totalPages ? 'disabled' : ''} 
+                onclick="getPhimMoi(${currentPage + 1})" 
+                class="pagination-btn">
+            Next
+        </button>
+    `;
+
+    paginationContainer.innerHTML = paginationHTML;
+}
+
 // Initialize both carousel and movies when on index page
 
 if (window.location.pathname.includes('/')) {
@@ -206,11 +254,11 @@ async function getPhimBo(page = 1) {
                         window.location.href = `/Pages/detailpage.html?id=${filmId}`;
                     });
                 });
-
             } else {
                 console.warn("No movies found in API response.");
                 phimBoContainer.innerHTML = `<p class="error-message">Không có phim bộ.</p>`;
             }
+             
         } catch (error) {
             console.error("Error loading movies:", error);
             phimBoContainer.innerHTML = `<p class="error-message">Không thể tải phim bộ.</p>`;
@@ -221,6 +269,7 @@ async function getPhimBo(page = 1) {
 // Call the function when on the TV shows page
 if (window.location.pathname.includes('phim-bo.html')) {
     getPhimBo();
+    createPagination();
 }
 
 
@@ -388,7 +437,7 @@ async function getPhimHoatHinh(page = 1) {
                         window.location.href = `/Pages/detailpage.html?id=${filmId}`;
                     });
                 });
-
+                createPagination();
             } else {
                 console.warn("No TV shows found in API response.");
                 phimTruyenHinhContainer.innerHTML = `<p class="error-message">Không có phim truyền hình.</p>`;
@@ -543,7 +592,6 @@ async function getPhimLe(page = 1) {
     }
 }
 
-// Call the function when on the TV shows page
 if (window.location.pathname.includes('phim-le.html')) {
     getPhimLe();
 }
@@ -552,8 +600,64 @@ if (window.location.pathname.includes('phim-le.html')) {
 
 ///phan trang
 // function page
+async function implementPagination(totalPages, currentPage, container) {
+    const paginationContainer = document.createElement('div');
+    paginationContainer.className = 'pagination';
 
+    // Previous button
+    if (currentPage > 1) {
+        const prevButton = document.createElement('button');
+        prevButton.textContent = 'Previous';
+        prevButton.onclick = () => loadPage(currentPage - 1);
+        paginationContainer.appendChild(prevButton);
+    }
 
-// Hàm để tạo các nút phân trang
+    // Page numbers
+    for (let i = 1; i <= totalPages; i++) {
+        const pageButton = document.createElement('button');
+        pageButton.textContent = i;
+        pageButton.className = i === currentPage ? 'active' : '';
+        pageButton.onclick = () => loadPage(i);
+        paginationContainer.appendChild(pageButton);
+    }
 
+    // Next button
+    if (currentPage < totalPages) {
+        const nextButton = document.createElement('button');
+        nextButton.textContent = 'Next';
+        nextButton.onclick = () => loadPage(currentPage + 1);
+        paginationContainer.appendChild(nextButton);
+    }
 
+    container.appendChild(paginationContainer);
+}
+
+async function fetchWithErrorHandling(url) {
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return await response.json();
+    } catch (error) {
+        console.error('API Error:', error);
+        showErrorMessage('Failed to load content. Please try again later.');
+        return null;
+    }
+}
+
+function showErrorMessage(message) {
+    const errorDiv = document.createElement('div');
+    errorDiv.className = 'error-message';
+    errorDiv.textContent = message;
+    document.querySelector('.main-card').appendChild(errorDiv);
+}
+
+function showLoading(container) {
+    container.innerHTML = `
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <p>Loading content...</p>
+        </div>
+    `;
+}
