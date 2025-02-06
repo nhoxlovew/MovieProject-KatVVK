@@ -12,7 +12,7 @@
 - Cần có một phần mềm quản lý chung về mã sách, tên người mượn sách hay thời gian mượn và trả sách… Để dễ dàng quản lý những vấn đề trên, chúng tôi đã thiết kế ứng dụng quản lý thư viện để giúp các thư viện quản lý tài nguyên của họ, bao gồm sách, tạp chí, tài liệu tham khảo và các nguồn thông tin khác.
 - Ứng dụng này thường được sử dụng để theo dõi các khoản vay, đặt chỗ và lưu trữ.Ứng dụng quản lý thư viện Java là một phần mềm được thiết kế để giúp các thư viện quản lý tài nguyên của họ, bao gồm sách, tạp chí, tài liệu tham khảo và các nguồn thông tin khác một cách nhanh chóng và hiệu quả hơn.
   
- ![Uploading image.png…](https://images2.alphacoders.com/261/26102.jpg)
+ //*![Uploading image.png…](https://images2.alphacoders.com/261/26102.jpg)*//
 
 
 ## 🤖Các chức năng chính của ứng dụng quản lý thư viện Java🤖:
