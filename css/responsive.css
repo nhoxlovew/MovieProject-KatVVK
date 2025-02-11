@@ -1,4 +1,4 @@
-@media (max-width: 375) {
+@media (max-width: 500) {
     * {
         height: 100vh;
         width: 100%;
@@ -10,7 +10,7 @@
 }
 
 /* iPhone 7 - Width: 375px */
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 500px) {
     /* Header */
     .header{
         padding: 10px 0 ;
