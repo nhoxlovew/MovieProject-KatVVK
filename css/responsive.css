@@ -1,31 +1,60 @@
 @media (max-width: 375) {
-    .nav{
-        width: 1px;
+    * {
+        height: 100vh;
+        width: 100%;
+    }
+
+    .nav {
+        width: 100%;
     }
 }
 
 /* iPhone 7 - Width: 375px */
 @media screen and (max-width: 375px) {
     /* Header */
+    .header{
+        padding: 10px 0 ;
+    }
     .header .container {
-        padding: 0 10px;
+        max-width: 100%;
+        overflow-x: hidden;
+        padding: 0 ;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        box-sizing: border-box; 
     }
 
+    body, html {
+        width: 100%;
+        overflow-x: hidden;
+    }
+    
     .logo img {
-        width: 80px;
+        width: 100px;
+        size: 10px;
     }
 
     .nav {
-        display: none; /* Ẩn navigation chính */
+        display: none;
+        /* Ẩn navigation chính */
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: #1a1a1a;
+        text-align: center;
+        padding: 10px 0;
     }
 
     .search-login {
         width: 100%;
-        justify-content: flex-end;
+        align-items: center;
     }
 
     .search-box {
-        width: 200px;
+        width: 100%;
     }
 
     .search-box input {
@@ -34,16 +63,22 @@
     }
 
     .auth {
-        display: none; /* Ẩn login/signup buttons */
+        display: none;
+        /* Ẩn login/signup buttons */
     }
 
     /* Carousel */
+    .carousel {
+        height: auto;
+    }
+
     .carousel-container {
-        margin: 10px 0;
+        /* padding-right: 10px; */
+        width: 340px;
     }
 
     .carousel-slide {
-        height: 200px;
+        height: 100px;
     }
 
     .carousel-slide img {
@@ -66,15 +101,19 @@
     .movie-card-container {
         grid-template-columns: repeat(2, 1fr);
         gap: 10px;
-        padding: 10px;
+        padding: auto;
     }
 
     .card {
-        width: 100%;
+        width: 120px;
+        height: 200px;
     }
 
     .card img {
-        height: 180px;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+
     }
 
     .content span {
@@ -83,7 +122,7 @@
 
     /* Search Results */
     #movie-suggest {
-        width: 100%;
+        width: 250px;
         left: 0;
         max-height: 300px;
     }
@@ -104,17 +143,18 @@
 
 /* iPhone XS - Width: 414px */
 @media screen and (max-width: 414px) {
+
     /* Header */
     .header .container {
         padding: 0 15px;
     }
 
     .logo img {
-        width: 90px;
+        left: 0;
     }
 
     .search-box {
-        width: 220px;
+        width: 100%;
     }
 
     /* Carousel */
@@ -146,6 +186,7 @@
 
 /* Common styles for both devices */
 @media screen and (max-width: 414px) {
+
     /* Section Titles */
     .section-title {
         font-size: 20px;
@@ -155,59 +196,16 @@
 
     /* Pagination */
     .pagination {
-        padding: 10px;
+        padding: 1px;
     }
 
     .pagination button {
         padding: 5px 10px;
-        font-size: 14px;
-        margin: 0 3px;
-    }
-
-    /* Loading & Error States */
-    .error-message {
-        font-size: 14px;
-        padding: 10px;
-    }
-
-    /* Hamburger Menu for Mobile */
-    .mobile-menu-btn {
-        display: block;
-        position: absolute;
-        right: 15px;
-        top: 15px;
-    }
-
-    /* Mobile Navigation */
-    .mobile-nav {
-        display: none;
-        position: fixed;
-        top: 60px;
-        left: 0;
-        width: 100%;
-        background: #1a1a1a;
-        padding: 10px 0;
-        z-index: 1000;
-    }
-
-    .mobile-nav.active {
-        display: block;
-    }
-
-    .mobile-nav ul {
-        list-style: none;
-        padding: 0;
+        font-size: 13px;
         margin: 0;
     }
 
-    .mobile-nav li {
-        padding: 10px 15px;
-        border-bottom: 1px solid #333;
-    }
+    /* Loading & Error States */
 
-    .mobile-nav a {
-        color: white;
-        text-decoration: none;
-        font-size: 16px;
-    }
+    /* Hamburger Menu for Mobile */
 }

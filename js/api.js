@@ -514,7 +514,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }, 500);
 
-
     // Chỉ ẩn kết quả khi input rỗng
     searchInput.addEventListener('input', function () {
         const searchTerm = this.value.trim();
@@ -541,9 +540,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
-
-
-
 
 
 async function getPhimLe(page = 1) {
@@ -595,8 +591,6 @@ async function getPhimLe(page = 1) {
 if (window.location.pathname.includes('phim-le.html')) {
     getPhimLe();
 }
-
-
 
 ///phan trang
 // function page
