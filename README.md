@@ -12,7 +12,7 @@
 - Cần có một phần mềm quản lý chung về mã sách, tên người mượn sách hay thời gian mượn và trả sách… Để dễ dàng quản lý những vấn đề trên, chúng tôi đã thiết kế ứng dụng quản lý thư viện để giúp các thư viện quản lý tài nguyên của họ, bao gồm sách, tạp chí, tài liệu tham khảo và các nguồn thông tin khác.
 - Ứng dụng này thường được sử dụng để theo dõi các khoản vay, đặt chỗ và lưu trữ.Ứng dụng quản lý thư viện Java là một phần mềm được thiết kế để giúp các thư viện quản lý tài nguyên của họ, bao gồm sách, tạp chí, tài liệu tham khảo và các nguồn thông tin khác một cách nhanh chóng và hiệu quả hơn.
   
- ![Uploading image.png…](https://images2.alphacoders.com/261/26102.jpg)
+ **![Uploading image.png…](https://images2.alphacoders.com/261/26102.jpg)**
 
 
 ## 🤖Các chức năng chính của ứng dụng quản lý thư viện Java🤖:
@@ -35,11 +35,9 @@
 💡Ứng dụng quản lý thư viện Java là một công cụ có giá trị cho các thư viện ở mọi quy mô. Ứng dụng này có thể giúp các thư viện cải thiện hiệu quả và hiệu quả của họ, đồng thời cung cấp cho người dùng trải nghiệm tốt hơn.
 
 ## 🧔GIới thiệu thành viên🧔
-| Họ và Tên        | Mã Sinh Viên | GitHub |
-| ---------------- | ------------ | ------------ |
-| Hoàng Anh        | 21DH113434   | nhoxlovew |
-| Đặng Trần Hoàng Trung  | 21DH113401 | trungdangtd |
-| Hồ Gia Lâm       | 21DH110956       | hzlammm | 
+| Họ và Tên        | GitHub |
+| ---------------- | ------------ |
+| Hoàng Anh        | nhoxlovew |
 ## 🔧Công cụ hỗ trợ🔨
 
 <p align="left"> <a href="https://developer.android.com" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/android/android-original-wordmark.svg" alt="android" width="40" height="40"/> </a> <a href="https://firebase.google.com/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/firebase/firebase-icon.svg" alt="firebase" width="40" height="40"/> </a> <a href="https://git-scm.com/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" alt="git" width="40" height="40"/> </a> <a href="https://www.java.com" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" alt="java" width="40" height="40"/> </a> </p>
@@ -48,11 +46,9 @@
 Nhìn chung chúng em đã hoàn thành được đồ án hiện tại của mình một cách tổng thể các chức năng cần thiết và các chức năng đã lên kế hoạch...
 
 👇sau đây là các chức năng chính đã làm được 👇:
-- Tính năng đăng nhập/ đăng ký
-- Sreach và sắp xếp sách
-- Phân loại sách
-- Mượn sách
-- Gợi ý sách cho người dùng
+- Sreach và hiển thị phim
+- Fetch API 
+- Thiết kế giao diện dịu mắt và cơ bản
 
 Các chức năng chúng em nhận định đã hoàn thành ở mức tốt nhưng song với đó vẫn còn một số tính năng khi mà nhìn lại app tụi em vẫn thấy nhìn nhận được được một số vấn đề vẫn chưa làm chưa làm được như: 
 
@@ -68,7 +64,6 @@ Sau thời gian làm đồ án chúng em đã rút ra kinh nghiệm và sẽ là
 ## 🏡 Giao diện của WebPhim 📗
 Giao diện trang chủ 📖 :
 
-![Screenshot 2-11-03 143421](https://github.com/trungdangtd/Nhom4_AppQuanLyThuVien_T6_Ca3/assets/125419112/917808c2-ae1d-452e-8ec1-8cb1bc6247d2)|![3333](https://github.com/trungdangtd/Nhom4_AppQuanLyThuVien_T6_Ca3/assets/125419112/0a782540-6a8c-44e2-b776-8fea1f999e97)
 
 
 
