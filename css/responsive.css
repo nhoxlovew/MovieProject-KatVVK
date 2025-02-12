@@ -11,26 +11,29 @@
 
 /* iPhone 7 - Width: 375px */
 @media screen and (max-width: 500px) {
+
     /* Header */
-    .header{
-        padding: 10px 0 ;
+    .header {
+        padding: 10px 0;
     }
+
     .header .container {
         max-width: 100%;
-        overflow-x: hidden;
-        padding: 0 ;
+        /* overflow-x: hidden; */
+        padding: 0;
         margin: 0 auto;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        box-sizing: border-box; 
+        box-sizing: border-box;
     }
 
-    body, html {
+    body,
+    html {
         width: 100%;
         overflow-x: hidden;
     }
-    
+
     .logo img {
         width: 100px;
         size: 10px;
@@ -39,7 +42,6 @@
     .nav {
         display: none;
         /* Ẩn navigation chính */
-        position: absolute;
         top: 60px;
         left: 0;
         width: 100%;
@@ -69,16 +71,35 @@
 
     /* Carousel */
     .carousel {
+        outline: none;
         height: auto;
     }
 
     .carousel-container {
+        -webkit-tap-highlight-color: transparent;
         /* padding-right: 10px; */
         width: 340px;
     }
 
+    .carousel-button {
+        outline: none;
+    }
+
+    .carousel-button:focus,
+    .carousel-button:active {
+        outline: none !important;
+        box-shadow: none !important;
+    }
+
+    .carousel-button:focus {
+        outline: none;
+    }
+
     .carousel-slide {
-        height: 100px;
+        outline: none !important;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+        /* Removes tap highlight on mobile */
     }
 
     .carousel-slide img {
@@ -99,9 +120,12 @@
 
     /* Movie Cards */
     .movie-card-container {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-        padding: auto;
+        width: 100%;
+        left: 0;
+        overflow-y: auto;
+        background-color: #000;
+        /* Ensuring background visibility */
+        z-index: 999;
     }
 
     .card {
@@ -122,7 +146,8 @@
 
     /* Search Results */
     #movie-suggest {
-        width: 250px;
+        position: absolute;
+        width: 200px;
         left: 0;
         max-height: 300px;
     }
@@ -139,7 +164,59 @@
     .card-result-name {
         font-size: 14px;
     }
+
+    .movie-detail-container {
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        height: 200px;
+        margin: 50px auto;
+        align-items: center;
+        position: relative;
+        z-index: 0;
+        display: flex;
+        gap: 25px;
+        padding: 20px;
+        background: rgba(12, 31, 6, 0.65);
+        /* Nền đen trong suốt */
+        border-radius: 15px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .movie-poster .img-card {
+        border-radius: 25px;
+        padding: 15px;
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+    }
+
+    .movie-info {
+        top: 0;
+        width: 0;
+        font-size: 10px;
+        height: 10px;
+    }
+    .episode{
+        /* display: flex; */
+        font-size: 10px;
+    }
+
+
+
+
+
+
+
+
 }
+
+
+
+
+
+
+
 
 /* iPhone XS - Width: 414px */
 @media screen and (max-width: 414px) {
