@@ -184,6 +184,7 @@ body {
 
 
 #movie-suggest {
+    scroll-behavior: smooth;
     height: 300px;
     width: 450px;
     position: absolute;
@@ -350,15 +351,15 @@ body {
 
 .pagination button {
     margin: 0 5px;
-    padding: 5px 10px;
-    border: 1px solid #ccc;
-    background-color: #fff;
+    padding: 15px 25px;
+    border: 1px solid #cccccc;
+    background-color: transparent;
     cursor: pointer;
 }
 
 .pagination button.active {
     background-color: #5CC793;
-    color: #fff;
+    color: black;
     border-color: #5CC793;
 }
 
@@ -399,13 +400,9 @@ body {
 
 .pagination-btn:hover {
     background: #5CC793;
-    color: white;
+    color : black
 }
 
-.pagination-btn.active {
-    background: #5CC793;
-    color: white;
-}
 
 .pagination-btn:disabled {
     border-color: #ccc;
