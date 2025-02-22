@@ -79,12 +79,13 @@
 
 .card:hover .play-button {
     opacity: 1;
+    background: transparent;
     transform: translate(-50%, -50%) scale(1.2);
     cursor: pointer;
 }
 
 .play-button::after {
-    content: '▶';
+    content: '▶' ;
     font-size: 28px;
     color: #5CC793;
 }
