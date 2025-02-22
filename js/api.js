@@ -1,4 +1,3 @@
-const mainContainer = document.querySelector('.main-card');
 const detailContainer = document.getElementsByClassName('.movie-detail-container');
 const path_img = "https://img.ophim.live/uploads/movies/"// Path to movie images
 let currentPage = 1;
@@ -10,7 +9,7 @@ async function getPhimMoi(page = 1) {
     try {
         const response = await fetch(`https://ophim1.com/danh-sach/phim-moi-cap-nhat?page=${page}`);
         const data = await response.json();
-
+        console.log(data)
         // Update total pages
         totalPages = Math.ceil(data.pagination.totalItems / itemsPerPage);
         currentPage = page;
@@ -25,6 +24,7 @@ async function getPhimMoi(page = 1) {
                 <img class="img-card" src="${baseImageUrl}${item.thumb_url}" alt="Movie Title">
                 <div class="content">
                     <span>${item.name}</span>
+                    <span>(${item.year})</span>
                 </div>
                 <div class="play-button"></div>
             </div>
@@ -127,14 +127,15 @@ async function getDetailFilm() {
 
 
         // Update background overlay
-        backgroundOverlay.innerHTML = `<img src="${data.movie.poster_url}" alt="">
-         <div class="gradient-overlay"></div> `;
+        // backgroundOverlay.innerHTML = `<img src="${data.movie.poster_url}" alt="">
+        //  <div class="gradient-overlay"></div> `;
 
         // Update movie details
         moviePoster.innerHTML = ` <img class="img-card" src="${data.movie.poster_url}" alt="Movie Poster">`;
         movieInfo.innerHTML = `
             <h1 class="movie-title">${movie.name}</h1>
             <p><strong>Năm Phát Hành:</strong> ${movie.year}</p>
+            <p><strong>Chất Lượng:</strong> ${movie.quality}</p>
             <p><strong>Thể Loại:</strong> ${movie.category.map((cate) => cate.name).join(', ')}</p>
             <p><strong>Đạo diễn:</strong> ${movie.director.join(', ') || 'Đang cập nhật'}</p>
             <p><strong>Quốc Gia:</strong> ${movie.country.map((countr) => countr.name).join(', ')}</p>
@@ -523,7 +524,7 @@ async function initializeCarousel() {
 
 
         const res = data.items
-        const carouselQuantity = res.slice(0, 5);
+        const carouselQuantity = res.slice(0, 10);
         const carouselTrack = document.querySelector('.carousel-track');
 
         carouselTrack.innerHTML = ``;

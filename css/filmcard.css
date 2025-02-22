@@ -32,14 +32,15 @@
 }
 
 .content {
-    position: absolute;
+    position:absolute;
     bottom: 0px;
     text-align: center;
+    padding: 0 10px;
     color: white;
     font-size: 20px;
     font-weight: bold;
     opacity: 1;
-    transform: translateY(70px);
+    transform: translateY(100px);
     transition: opacity 0.3s ease, transform 0.3s ease-in-out;
 }
 

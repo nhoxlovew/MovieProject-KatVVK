@@ -19,8 +19,18 @@ body {
     box-shadow: 0 0px 50px rgba(13, 160, 60, 0.3);
     position: sticky;
     top: 0;
-    padding: 5px 0;
+    width: 100%;
+    padding: 10px 0;
     z-index: 1000;
+}
+.header .container {
+    width: 100%;
+    padding: 0 15px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
 }
 
 .container {
@@ -42,6 +52,8 @@ body {
 }
 
 .nav ul li {
+    font-family: monospace;
+    letter-spacing: 1px;
     text-align: center;
     display: flex;
     justify-content: center;
@@ -291,7 +303,7 @@ body {
     right: 0;
     padding: 20px;
     border-radius: 10px;
-    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    background: linear-gradient(transparent, rgba(0, 0, 0, 50));
     color: white;
 }
 
@@ -400,7 +412,7 @@ body {
 
 .pagination-btn:hover {
     background: #5CC793;
-    color : black
+    color: black
 }
 
 
@@ -423,4 +435,12 @@ body {
     height: 100%;
     object-fit: cover;
     z-index: -1;
+}
+
+.new-box{
+    width: 100px;
+    height: 100px;
+    border-color: #40e997;
+    border: 50px solid;
+    z-index: 1000;
 }
