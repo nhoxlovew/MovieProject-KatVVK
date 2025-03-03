@@ -79,7 +79,7 @@
 .episode-list {
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    /* justify-content: space-between; */
     flex-wrap:wrap ;
     gap: 15px;
 }
@@ -90,7 +90,7 @@
     border-radius: 6px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
     transition: background-color 0.3s;
-     overflow: hidden; /*Ensure child elements do not overflow */
+    overflow: hidden; /*Ensure child elements do not overflow */
 }
 
 .episode-item a {

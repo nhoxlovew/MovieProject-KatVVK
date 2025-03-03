@@ -9,7 +9,6 @@
     }
 }
 
-/* iPhone 7 - Width: 375px */
 @media (max-width: 1550px) {
 
     /* Header */
@@ -222,16 +221,18 @@
 
     .episode-list {
         display: flex;
+        justify-content: space-evenly;
         flex-wrap: wrap;
-        padding-left: 10px;
+        margin: 20px;
         padding-bottom: 10px;
-        gap: 15px;
-    }
+        gap: 10px;
+    }   
 
     .episode-item {
         background: #2c2c2c;
-        padding: 10px 15px;
-        border-radius: 10px;
+        padding: 0;
+        margin: 0;
+        border-radius: 7px;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
         transition: background-color 0.3s;
     }
@@ -239,7 +240,11 @@
     .episode-item a {
         text-decoration: none;
         color: #ffffff;
-        font-size: 10px;
+        font-size: 11px;
+        display: block; /* Ensure the link covers the full area */
+        width: 100%; /* Ensure the link covers the full width */
+        height: 100%; /* Ensure the link covers the full height */
+        padding: 10px 15px; /* Add padding to the link */
     }
 
     .episode-item:hover {
