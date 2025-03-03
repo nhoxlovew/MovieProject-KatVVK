@@ -182,10 +182,11 @@
     .movie-info {
         padding: 0;
         margin: 0;
-        font-size: 12px;
         z-index: 1000;
     }
-
+    .movie-info .movie-title{
+        font-size: 27px;
+    }
     .gradient-overlay {
         position: absolute;
         bottom: 0;
@@ -197,16 +198,18 @@
     /* Episode */
     .episode {
         border-radius: 10px;
-        background: rgba(4, 21, 9, 0.55);
+        background: rgba(140, 209, 177, 0.144);
+        box-shadow: 0 4px 10px rgba(6, 216, 17, 0.35);
         height: auto;
         width: auto;
+        margin-bottom: 100px;
         padding: 0;
         margin: 0;
     }
 
     .episode-list {
         display: flex;
-        font-size: 5px;
+        font-size: 10px;
     }
 
     .episode h2 {

@@ -177,7 +177,6 @@ async function getDetailFilm() {
     } catch (error) {
         console.error("Error fetching movie details:", error);
     }
-
 }
 getDetailFilm()
 

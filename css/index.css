@@ -42,14 +42,8 @@ body {
 
 .container {
     position: relative;
-    display: flex;
     max-width: 1500px;
-    justify-content: space-between;
-    /* Keeps logo on the left and search-login on the right */
-    align-items: center;
     gap: 20px;
-    width: 100%;
-    margin: 0 auto;
 }
 
 .logo img {

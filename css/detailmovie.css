@@ -19,6 +19,7 @@
 
 .movie-info h1{
     color: #5CC793;
+    font-weight: bold;
 }
 
 .movie-detail-container {
@@ -77,33 +78,46 @@
 
 .episode-list {
     display: flex;
-    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap:wrap ;
     gap: 15px;
 }
 
 .episode-item {
     background: #2c2c2c;
-    padding: 10px 15px;
+    padding: 0; /* Remove padding from the parent element */
     border-radius: 6px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
     transition: background-color 0.3s;
+     overflow: hidden; /*Ensure child elements do not overflow */
 }
 
 .episode-item a {
     text-decoration: none;
     color: #ffffff;
     font-size: 16px;
+    display: block; /* Ensure the link covers the full area */
+    width: 100%; /* Ensure the link covers the full width */
+    height: 100%; /* Ensure the link covers the full height */
+    padding: 10px 15px; /* Add padding to the link */
 }
 
 .episode-item:hover{
     background-color: #5cc79357;
     cursor: pointer;
+    transform:scale(1.1);
 }
 
-/* .episode-item:active::after{
-    background-color: #5cc79357;
-} */
+.episode-link {
+    display: block; /* Ensure the background color covers the full width and height */
+    padding: 5px 5px; /* Add padding to make it look better */
+}
 
+.episode-link.active {
+    background-color: #14da7a57; /* Change this to your desired highlight color */
+    color: #000; /* Change this to your desired text color */
+}
 
 .video-frame {
     width: 1800px;
