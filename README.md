@@ -11,7 +11,11 @@
 - Dữ liệu phim được cập nhật liên tục thông qua API, mang lại trải nghiệm xem phim nhanh chóng và tiện lợi.
 - Giao diện thân thiện, dễ sử dụng, phù hợp với mọi đối tượng người dùng.
 
-![image](https://github.com/user-attachments/assets/e90cbbb3-44b1-41af-a992-8cf05422d661)
+![image](https://github.com/user-attachments/assets/e90cbbb3-44b1-41af-a992-8cf05422d661) ![image](https://github.com/user-attachments/assets/a9d97fbd-f769-4ddf-85d7-76e99dfa9dc2) 
+## Responsive cho các thiết bị di động:
+![image](https://github.com/user-attachments/assets/c6d6c1fc-6417-4623-9cdd-0772600a199c) ![Uploading image.png…]()
+
+
 
 ## 🤖 Các chức năng chính của Web Xem Phim 🤖:
 - **Tìm kiếm và hiển thị phim**: Người dùng có thể dễ dàng tìm kiếm phim theo tên, thể loại, hoặc năm phát hành.
