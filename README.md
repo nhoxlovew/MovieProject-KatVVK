@@ -13,7 +13,7 @@
 
 ![image](https://github.com/user-attachments/assets/e90cbbb3-44b1-41af-a992-8cf05422d661) ![image](https://github.com/user-attachments/assets/a9d97fbd-f769-4ddf-85d7-76e99dfa9dc2) 
 ## Responsive cho các thiết bị di động:
-![image](https://github.com/user-attachments/assets/c6d6c1fc-6417-4623-9cdd-0772600a199c) ![Uploading image.png…]()
+![image](https://github.com/user-attachments/assets/c6d6c1fc-6417-4623-9cdd-0772600a199c) ![image](https://github.com/user-attachments/assets/cf7c989f-6a38-4da8-b90e-1e1d5490539e)
 
 
 
