@@ -4,11 +4,24 @@ let currentPage = 1;
 let totalPages = 1;
 const itemsPerPage = 24; // Number of movies per page
 
+// Cache API responses
+const apiCache = new Map();
+
+async function fetchWithCache(url) {
+    if (apiCache.has(url)) {
+        return apiCache.get(url);
+    }
+    const response = await fetch(url);
+    const data = await response.json();
+    apiCache.set(url, data);
+    return data;
+}
+
 async function getPhimMoi(page = 1) {
     const phimMoiContainer = document.querySelector('#phim-moi');
+    const apiUrl = `https://ophim1.com/danh-sach/phim-moi-cap-nhat?page=${page}`;
     try {
-        const response = await fetch(`https://ophim1.com/danh-sach/phim-moi-cap-nhat?page=${page}`);
-        const data = await response.json();
+        const data = await fetchWithCache(apiUrl);
         console.log(data)
         // Update total pages
         totalPages = Math.ceil(data.pagination.totalItems / itemsPerPage);
@@ -51,7 +64,38 @@ if (window.location.pathname.includes('/')) {
     getPhimMoi();
 }
 
+// // Lazy load data when scrolling
+// document.addEventListener('scroll', () => {
+//     const phimMoiContainer = document.querySelector('#phim-moi');
+//     if (phimMoiContainer.getBoundingClientRect().top < window.innerHeight) {
+//         getPhimMoi();
+//     }
+// });
 
+// // Lazy load data for other pages
+// document.addEventListener('scroll', () => {
+//     if (window.location.pathname.includes('phim-bo.html')) {
+//         const phimBoContainer = document.querySelector('#phim-bo');
+//         if (phimBoContainer.getBoundingClientRect().top < window.innerHeight) {
+//             getPhimBo();
+//         }
+//     } else if (window.location.pathname.includes('phim-truyen-hinh.html')) {
+//         const phimTruyenHinhContainer = document.querySelector('#phim-truyen-hinh');
+//         if (phimTruyenHinhContainer.getBoundingClientRect().top < window.innerHeight) {
+//             getPhimTruyenHinh();
+//         }
+//     } else if (window.location.pathname.includes('phim-hoat-hinh.html')) {
+//         const phimHoatHinhContainer = document.querySelector('#phim-hoat-hinh');
+//         if (phimHoatHinhContainer.getBoundingClientRect().top < window.innerHeight) {
+//             getPhimHoatHinh();
+//         }
+//     } else if (window.location.pathname.includes('phim-le.html')) {
+//         const phimLeContainer = document.querySelector('#phim-le');
+//         if (phimLeContainer.getBoundingClientRect().top < window.innerHeight) {
+//             getPhimLe();
+//         }
+//     }
+// });
 
 async function getPhimBo(page = 1) {
     const phimBoContainer = document.querySelector('#phim-bo');
@@ -484,7 +528,7 @@ function createPagination(pageFunction) {
     // Previous button
     paginationHTML += `
         <button ${currentPage === 1 ? 'disabled' : ''} 
-                onclick="${pageFunction}(${currentPage - 1})" 
+                onclick="scrollToTop(); ${pageFunction}(${currentPage - 1})" 
                 class="pagination-btn">
             Previous
         </button>
@@ -494,7 +538,7 @@ function createPagination(pageFunction) {
     for (let i = 1; i <= totalPages; i++) {
         if (i === 1 || i === totalPages || (i >= currentPage - 2 && i <= currentPage + 2)) {
             paginationHTML += `
-                <button onclick="${pageFunction}(${i})" 
+                <button onclick="scrollToTop(); ${pageFunction}(${i})" 
                         class="pagination-btn ${currentPage === i ? 'active' : ''}">
                     ${i}
                 </button>
@@ -507,13 +551,21 @@ function createPagination(pageFunction) {
     // Next button
     paginationHTML += `
         <button ${currentPage === totalPages ? 'disabled' : ''} 
-                onclick="${pageFunction}(${currentPage + 1})" 
+                onclick="scrollToTop(); ${pageFunction}(${currentPage + 1})" 
                 class="pagination-btn">
             Next
         </button>
     `;
 
     paginationContainer.innerHTML = paginationHTML;
+}
+
+// Add a helper function to scroll to the top
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth' // Smooth scrolling effect
+    });
 }
 
 async function initializeCarousel() {
