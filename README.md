@@ -59,12 +59,12 @@
 - Tìm kiếm và hiển thị phim.
 - Fetch API để lấy dữ liệu phim.
 - Thiết kế giao diện cơ bản, thân thiện với người dùng.
+- Chức năng tìm kiếm và lọc phim.
 
 ### ❌ Chưa hoàn thành:
 - Tối ưu hóa tốc độ load dữ liệu từ API.
 - Cải thiện giao diện cho linh hoạt và thân thiện hơn.
 - Thêm tính năng phân loại phim.
-- Nâng cao trải nghiệm tìm kiếm và lọc phim.
 
 ## 🏡 Giao diện của Web Xem Phim 📗
 - Giao diện trang chủ sẽ hiển thị các bộ phim mới nhất với hình ảnh và tiêu đề nổi bật.
